@@ -1,6 +1,6 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "Lauren Duvall"
 date: "DATA 2401"
 output: html_document
 ---
@@ -16,49 +16,73 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
-
-
+convert <- function(faren) {
+  celc <- (faren-32)*(5/9)
+  return(celc)
+}
+convert(212)
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
-
-
+convertboth <- function(faren , feet) {
+  celc<- (faren-32)*(5/9)
+  meters <- (feet*0.3048)
+  return(c(celc,meters))
+}
+convert(72)
+convertboth(72,6)
 ```
 
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
+number <- 7
 
-
+if (number > 0) {
+    print('number is positive')
+} else if(number == 0) {
+    print('number is zero')
+} else {
+    print('number is negative')
+}
+    
 ```
 
 4. Write a function that returns the absolute value of the number passed as an argument.
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-
-
+absolute_val <- function(num) {
+  if (num < 0) {
+       return(num*-1)
+  }else {
+    return(num)
+  }
+}
+absolute_val(-987652416.90)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
+error<- function(input) {
+is.character(input)
+   if (is.character(input)) {
+      print('Please pass a numerical value to this function.')
+  }else if (is.numeric(input)) {
+      print('No error.')
+  }else {
+      return(input)
+  }
+}
+error('hello')
 
 
 ```
-   
-   
-
-
-
-
-
-
 ```
 
